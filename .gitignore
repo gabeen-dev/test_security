@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# 특정 환경에 해당하는 application 파일 무시
+src/main/resources/application-local.properties
