@@ -22,8 +22,8 @@ public class SecurityConfig {
 
 		http
 			.authorizeHttpRequests((auth) -> auth
-				// "/"(홈), "/login", "/loginProc" 경로는 인증 없이 접근 가능
-				.requestMatchers("/", "/login", "/loginProc").permitAll()
+				// "/"(홈), "/login", "/loginProc", "/join", "/joinProc" 경로는 인증 없이 접근 가능
+				.requestMatchers("/", "/login", "/loginProc", "/join", "/joinProc").permitAll()
 
 				// "/admin" 경로는 "ADMIN" 역할(ROLE_ADMIN)을 가진 사용자만 접근 가능
 				.requestMatchers("/admin").hasRole("ADMIN")
