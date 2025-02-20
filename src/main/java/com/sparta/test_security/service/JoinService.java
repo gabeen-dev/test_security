@@ -19,6 +19,12 @@ public class JoinService {
 
 	public void joinProcess(JoinDTO joinDTO) {
 
+		//db에 이미 동일한 username을 가진 회원이 존재하는지 중복 검증
+		boolean isUser = userRepository.existsByUsername(joinDTO.getUsername());
+		if (isUser) {
+			return;//종료
+		}
+
 		UserEntity data = new UserEntity();
 
 		//DB에 동일한 Username 있는 지 검증 필요
