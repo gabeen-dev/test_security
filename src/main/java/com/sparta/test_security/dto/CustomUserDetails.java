@@ -1,32 +1,50 @@
 package com.sparta.test_security.dto;
 
 
+import com.sparta.test_security.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
 
+	private UserEntity userEntity;
+
+	public CustomUserDetails(UserEntity userData) {
+
+		this.userEntity = userData;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of();
+
+		Collection<GrantedAuthority> collection = new ArrayList<>();
+
+		collection.add(new GrantedAuthority() {
+			@Override
+			public String getAuthority() {
+				return userEntity.getRole();
+			}
+		});
+
+		return collection;
 	}
 
 	@Override
 	public String getPassword() {
-		return "";
+		return userEntity.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return "";
+		return userEntity.getUsername();
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return UserDetails.super.isAccountNonExpired();
+		return UserDetails.super.isAccountNonExpired();// 기본 구현을 그대로 사용 (true 반환)
 	}
 
 	@Override
