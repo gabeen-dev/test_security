@@ -4,7 +4,6 @@ import com.sparta.test_security.dto.CustomUserDetails;
 import com.sparta.test_security.entity.UserEntity;
 import com.sparta.test_security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
