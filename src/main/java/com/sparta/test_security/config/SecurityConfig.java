@@ -58,6 +58,12 @@ public class SecurityConfig {
 		// maxSessionsPreventsLogin(false) → 기존 세션 만료 & 새로운 로그인 허용
 		//.expiredUrl("/session-expired")); 세션 만료 시 이동할 URL 설정
 
+		http
+			.sessionManagement((auth) -> auth
+				.sessionFixation().changeSessionId());//로그인 시 동일한 세션에 대한 id 변경
+		//		sessionManagement().sessionFixation().none() : 로그인 시 세션 정보 변경 안함
+		//		sessionManagement().sessionFixation().newSession() : 로그인 시 세션 새로 생성
+
 		// 필터 체인을 빌드하여 반환
 		return http.build();
 	}
