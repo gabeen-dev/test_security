@@ -51,6 +51,13 @@ public class SecurityConfig {
 			// CSRF(Cross-Site Request Forgery) 보호 기능 비활성화
 			.csrf((auth) -> auth.disable());
 
+		http
+			.sessionManagement((auth) -> auth
+				.maximumSessions(1)  // 최대 허용 세션 수 = 1 (한 번에 하나의 세션만 허용)
+				.maxSessionsPreventsLogin(true)); // 새로운 로그인 시도 차단,
+		// maxSessionsPreventsLogin(false) → 기존 세션 만료 & 새로운 로그인 허용
+		//.expiredUrl("/session-expired")); 세션 만료 시 이동할 URL 설정
+
 		// 필터 체인을 빌드하여 반환
 		return http.build();
 	}
