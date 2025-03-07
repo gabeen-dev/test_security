@@ -47,9 +47,9 @@ public class SecurityConfig {
 				.permitAll()
 			);
 
-		http
-			// CSRF(Cross-Site Request Forgery) 보호 기능 비활성화
-			.csrf((auth) -> auth.disable());
+//		http
+//			// CSRF(Cross-Site Request Forgery) 보호 기능 비활성화 //배포환경에선 활성화(기본값) 후 보안을 위해 토큰필요
+//			.csrf((auth) -> auth.disable());
 
 		http
 			.sessionManagement((auth) -> auth
